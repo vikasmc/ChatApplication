@@ -1,6 +1,3 @@
-package httpserver;
-
-
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -23,7 +20,7 @@ import java.awt.event.WindowEvent;
 
 public class UI extends Frame implements ActionListener, KeyListener{
 	/**
-	 * 
+	 * @Vikas M C
 	 */
 	private static final long serialVersionUID = 1L;
 	Label meslabel;
