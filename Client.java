@@ -7,7 +7,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 
 public class Client {
-
+	/**
+	 * @Vikas M C
+	 */
 	public String SendName(String name, String option) {
 		String out = null;
 		try {
