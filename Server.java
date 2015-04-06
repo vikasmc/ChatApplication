@@ -29,9 +29,12 @@ public class HttpServerDemo {
 }
 
 class MyHandler implements HttpHandler {
+	//to store user names
 	public static ArrayList<String> users = new ArrayList<String>();
+	//to store messages from the clients.
 	public static HashMap<String, String> message = new HashMap<String, String>();
 	public static Map<String, HashMap<String, String>> messages = new HashMap<String, HashMap<String, String>>();
+	//to know the client is free or not.
 	public static HashMap<String, Boolean> isFree = new HashMap<String, Boolean>();
 
 	public void handle(HttpExchange exchange) throws IOException {
@@ -106,10 +109,7 @@ class MyHandler implements HttpHandler {
 			}
 			name = name.substring(1, name.length() - 1);
 			option = option.substring(1, option.length() - 1);
-			System.out.println(name);
-			System.out.println(option);
 			System.out.println(DeleteUser(name, option));
-			System.out.println("over");
 			responseBody.close();
 		}
 	}
