@@ -1,5 +1,3 @@
-package httpserver;
-
 import java.io.BufferedReader;
 import java.io.DataOutputStream;
 import java.io.FileNotFoundException;
@@ -29,7 +27,8 @@ public class Client {
 			wr.close();
 
 			int responseCode = con.getResponseCode();
-			BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));
+			BufferedReader in = new BufferedReader(new InputStreamReader(
+					con.getInputStream()));
 			String inputLine;
 			inputLine = in.readLine();
 			out = inputLine;
