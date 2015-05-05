@@ -10,6 +10,8 @@ public class Client {
 	/**
 	 * @Vikas M C
 	 */
+	 
+	 //To send the name of the User to cahtApp.
 	public String SendName(String name, String option) {
 		String out = null;
 		try {
@@ -46,6 +48,7 @@ public class Client {
 		return out;
 	}
 
+	//To get the message from other Clients.
 	public String GetMessage(String name) {
 		String out = null;
 		try {
@@ -75,6 +78,7 @@ public class Client {
 		return out;
 	}
 
+	//To send the message to other Clients.
 	public String SendMessage(String tao) {
 		String out = null;
 		try {
@@ -113,6 +117,7 @@ public class Client {
 		return out;
 	}
 
+	//To exit from the chatApp or Talk to other clients.
 	public String Delete(String name, String option) {
 		String out = null;
 		try {
