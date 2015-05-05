@@ -31,6 +31,7 @@ public class UI extends Frame implements ActionListener, KeyListener{
 	static String message, messg, usr, name, to;
 	Client r;
 
+	//Constructor of the Class
 	public UI(String title) {
 		super(title);
 		initComponents();
@@ -75,6 +76,7 @@ public class UI extends Frame implements ActionListener, KeyListener{
 		r = new Client();
 	}
 
+	//listen and perform action when the button is pressed
 	public void actionPerformed(ActionEvent ae) {
 		Button btn = (Button) ae.getSource();
 		if (btn == login) {
@@ -187,6 +189,7 @@ public class UI extends Frame implements ActionListener, KeyListener{
 		}
 	}
 
+	//Main method
 	public static void main(String s[]) {
 		UI mcc = new UI("Client");
 		mcc.setVisible(true);
