@@ -21,6 +21,8 @@ public class HttpServerDemo {
 	/**
 	 * @Vikas M C
 	 */
+	 
+	 // Main program that executes whenevr the Clinet execute a HTTP requrst
 	public static void main(String[] args) throws IOException {
 		InetSocketAddress addr = new InetSocketAddress(4444);
 		HttpServer server = HttpServer.create(addr, 0);
@@ -31,6 +33,7 @@ public class HttpServerDemo {
 	}
 }
 
+//trhis class handles all the HTTP request
 class MyHandler implements HttpHandler {
 	//to store user names
 	public static ArrayList<String> users = new ArrayList<String>();
@@ -42,6 +45,7 @@ class MyHandler implements HttpHandler {
 
 	public void handle(HttpExchange exchange) throws IOException {
 		String requestMethod = exchange.getRequestMethod();
+		//The GET request
 		if (requestMethod.equalsIgnoreCase("GET")) {
 			OutputStream responseBody = exchange.getResponseBody();
 			Headers requestHeaders = exchange.getRequestHeaders();
@@ -61,6 +65,7 @@ class MyHandler implements HttpHandler {
 			responseBody.write(output.getBytes());
 			responseBody.close();
 		}
+		//The PUT request
 		if (requestMethod.equalsIgnoreCase("PUT")) {
 			OutputStream responseBody = exchange.getResponseBody();
 			InputStream requestBody = exchange.getRequestBody();
@@ -81,6 +86,7 @@ class MyHandler implements HttpHandler {
 				responseBody.write(output.getBytes());
 				responseBody.close();
 		}
+		//The POST request
 		if (requestMethod.equalsIgnoreCase("POST")) {
 			InputStream stream = exchange.getRequestBody();
 			BufferedReader in = new BufferedReader(
@@ -92,6 +98,7 @@ class MyHandler implements HttpHandler {
 			responseBody.write(out.getBytes());
 			responseBody.close();
 		}
+		//The DELETE request
 		if (requestMethod.equalsIgnoreCase("DELETE")) {
 			OutputStream responseBody = exchange.getResponseBody();
 			Headers requestHeaders = exchange.getRequestHeaders();
@@ -117,6 +124,7 @@ class MyHandler implements HttpHandler {
 		}
 	}
 
+	//To add a new User
 	public String Add(String n) {
 		if (!users.contains(n)) {
 			users.add(n);
@@ -127,6 +135,7 @@ class MyHandler implements HttpHandler {
 		}
 	}
 
+	//To check wheather he is Free or not
 	public String IsFree(String name) {
 		if (isFree.containsKey(name)) {
 			if (isFree.get(name)) {
@@ -140,6 +149,7 @@ class MyHandler implements HttpHandler {
 		}
 	}
 
+	//to get the list of Clients who are online in chatApp
 	public String ShowUser() {
 		String Names = "";
 		for (String s2 : users) {
@@ -148,6 +158,7 @@ class MyHandler implements HttpHandler {
 		return Names;
 	}
 
+	//To get message in the chatApp
 	public String GetMessage(String name) {
 		if (messages.containsKey(name)) {
 			HashMap<String, String> m = messages.get(name);
@@ -165,6 +176,7 @@ class MyHandler implements HttpHandler {
 		}
 	}
 
+	//to fdelete the user from the cahtApp
 	public String DeleteUser(String names, String options) {
 		if (options.equals("chatOff")) {
 			if (!isFree.get(names)) {
@@ -180,6 +192,7 @@ class MyHandler implements HttpHandler {
 		return "sucess";
 	}
 
+	//to send the meessage to the User
 	public String SendMessage(String toa) {
 		String namepass[] = toa.split(":");
 		if (isFree.get(namepass[1]) != null) {
